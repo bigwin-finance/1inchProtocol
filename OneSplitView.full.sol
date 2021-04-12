@@ -781,7 +781,7 @@ library Address {
      * It is unsafe to assume that an address for which this function returns
      * false is an externally-owned account (EOA) and not a contract.
      *
-     * Among others, `isContract` will return false for the following 
+     * Among others, `isContract` will return false for the following
      * types of addresses:
      *
      *  - an externally-owned account
@@ -3298,7 +3298,9 @@ contract OneSplitCompound is OneSplitBaseWrap, OneSplitCompoundBase {
             return;
         }
 
+        // 判断策略是否符合要求
         if (flags.check(FLAG_DISABLE_ALL_WRAP_SOURCES) == flags.check(FLAG_DISABLE_COMPOUND)) {
+            // 获取是否支持该Token
             IERC20 underlying = _getCompoundUnderlyingToken(fromToken);
             if (underlying != IERC20(-1)) {
                 ICompoundToken(address(fromToken)).redeem(amount);
@@ -4786,6 +4788,7 @@ contract OneSplitWrap is
         uint256[] memory distribution,
         uint256 flags
     ) internal {
+        // 委托调用外部API
         (bool success, bytes memory data) = address(oneSplit).delegatecall(
             abi.encodeWithSelector(
                 this.swap.selector,

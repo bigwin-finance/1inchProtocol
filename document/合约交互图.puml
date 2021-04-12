@@ -1,16 +1,26 @@
 @startuml
 actor Trader
 control OneSplit_Contract
+control Uniswap_Contract
+control Aave_Contract
+
+
+== expect ==
+
+Trader -> OneSplit_Contract: 估算最佳兑换方案 getExpectedReturn()
+OneSplit_Contract -> Uniswap_Contract: 获取交易预算
+OneSplit_Contract -> Aave_Contract: 获取交易预算
+Uniswap_Contract -> OneSplit_Contract : 返回交易预算
+Aave_Contract -> OneSplit_Contract : 返回交易预算
+OneSplit_Contract -> OneSplit_Contract: aggregation()
+OneSplit_Contract -> Trader: 看到交易预估
 
 
 == swap ==
-
-Trader -> OneSplit_Contract: 估算最佳兑换方案
-OneSplit_Contract -> OneSplit_Contract: getExpectedReturn()
-
-
 Trader -> OneSplit_Contract: 执行多DEX兑换交易
-OneSplit_Contract -> OneSplit_Contract: swap()
+OneSplit_Contract -> Uniswap_Contract: swap()
+OneSplit_Contract -> Aave_Contract: swap()
+OneSplit_Contract -> Trader: 看到交易结果
 
 @enduml
 

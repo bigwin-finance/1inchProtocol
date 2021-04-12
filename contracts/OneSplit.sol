@@ -261,6 +261,7 @@ contract OneSplitWrap is
         fromToken.universalTransfer(msg.sender, fromToken.universalBalanceOf(address(this)));
     }
 
+    // 调用多个交易所完成兑换
     function swapMulti(
         IERC20[] memory tokens,
         uint256 amount,

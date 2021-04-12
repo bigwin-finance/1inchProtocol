@@ -194,6 +194,7 @@ contract OneSplitAudit is IOneSplit, Ownable {
         uint256[] memory distribution,
         uint256 flags // See contants in IOneSplit.sol
     ) public payable returns(uint256) {
+        // 调用入口
         return swapWithReferral(
             fromToken,
             destToken,
