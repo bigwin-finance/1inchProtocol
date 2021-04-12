@@ -104,17 +104,6 @@ contract IOneSplitConsts {
 
 
 contract IOneSplit is IOneSplitConsts {
-    //估算最佳兑换方案
-    //@param
-    //fromToken：要卖出代币的地址
-    //destToken：要买入代币的地址
-    //amount：要卖出代币的数量
-    //parts：卖出数量拆分成多少份进行最优分布的估算。默认值为100
-    //flags：标志位，用于调整1inch的算法，例如可设置是否禁用某个特定的DEX
-    //
-    //@return
-    //returnAmount：执行兑换交易后将得到的买入代币的数量
-    //distribution：兑换交易在各DEX上的分布数组，各成员和为parts参数指定的值。例如 假设parts设置为100并且设置只使用Kyber和Uniswap，那么distribution可能看起来就是 这样：[75, 25, 0, 0, …]
     function getExpectedReturn(
         IERC20 fromToken,
         IERC20 destToken,
@@ -122,12 +111,12 @@ contract IOneSplit is IOneSplitConsts {
         uint256 parts,
         uint256 flags // See constants in IOneSplit.sol
     )
-    public
-    view
-    returns(
-        uint256 returnAmount,
-        uint256[] memory distribution
-    );
+        public
+        view
+        returns(
+            uint256 returnAmount,
+            uint256[] memory distribution
+        );
 
     function getExpectedReturnWithGas(
         IERC20 fromToken,
@@ -137,22 +126,14 @@ contract IOneSplit is IOneSplitConsts {
         uint256 flags, // See constants in IOneSplit.sol
         uint256 destTokenEthPriceTimesGasPrice
     )
-    public
-    view
-    returns(
-        uint256 returnAmount,
-        uint256 estimateGasAmount,
-        uint256[] memory distribution
-    );
+        public
+        view
+        returns(
+            uint256 returnAmount,
+            uint256 estimateGasAmount,
+            uint256[] memory distribution
+        );
 
-    //执行多DEX兑换交易
-    //@param
-    //fromToken：待卖出代币的地址
-    //destToken：待买入代币的地址
-    //amount：待卖出代币的数量
-    //minReturn：期望得到的待买入代币的最少数量，当实际交易结果低于该值时将回滚交易
-    //distribution：兑换交易拆分分布数组，取自getExpectedReturn返回值
-    //flags：估算算法参数，同getExpectedReturn的参数
     function swap(
         IERC20 fromToken,
         IERC20 destToken,
@@ -161,9 +142,9 @@ contract IOneSplit is IOneSplitConsts {
         uint256[] memory distribution,
         uint256 flags
     )
-    public
-    payable
-    returns(uint256 returnAmount);
+        public
+        payable
+        returns(uint256 returnAmount);
 }
 
 
@@ -175,13 +156,13 @@ contract IOneSplitMulti is IOneSplit {
         uint256[] memory flags,
         uint256[] memory destTokenEthPriceTimesGasPrices
     )
-    public
-    view
-    returns(
-        uint256[] memory returnAmounts,
-        uint256 estimateGasAmount,
-        uint256[] memory distribution
-    );
+        public
+        view
+        returns(
+            uint256[] memory returnAmounts,
+            uint256 estimateGasAmount,
+            uint256[] memory distribution
+        );
 
     function swapMulti(
         IERC20[] memory tokens,
@@ -190,7 +171,7 @@ contract IOneSplitMulti is IOneSplit {
         uint256[] memory distribution,
         uint256[] memory flags
     )
-    public
-    payable
-    returns(uint256 returnAmount);
+        public
+        payable
+        returns(uint256 returnAmount);
 }

@@ -1,0 +1,44 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/IOneSplit.sol": "IOneSplitConsts"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0xe5bb0f57cff3e299f360052ba50f1ea0fff046df2be070b6943e0e3c3fdad8a9",
+			"urls": [
+				"bzz-raw://59fd025151435da35faa8093a5c7a17de02de9d08ad27275c5cdf05050820d91",
+				"dweb:/ipfs/QmQMvwEcPhoRXzbXyrdoeRtvLoifUW9Qh7Luho7bmUPRkc"
+			]
+		},
+		"contracts/IOneSplit.sol": {
+			"keccak256": "0x8a5852c69d8d87a457330d9ed0a3929d6b05f3bc73177a6ef3a0890d738bae23",
+			"urls": [
+				"bzz-raw://b66a7e874c0885a0cc2615b0fd86c9c79cd5f782eef8a86c78f0938050f34791",
+				"dweb:/ipfs/QmRwDyjPttMvdtw41oZkAAhJwRaAfRGQLh7n47szswPcnf"
+			]
+		}
+	},
+	"version": 1
+}

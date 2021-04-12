@@ -3,3 +3,4 @@ truffle-config.js
 js/
 test/helpers
 coverage/
+demo/
