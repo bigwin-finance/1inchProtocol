@@ -1,0 +1,31 @@
+@startuml
+title 1inch 类图
+
+class OneSplitAudit {
+    getExpectedReturn() // 估算最佳兑换方案
+    swap() // 执行多DEX交易
+}
+
+
+class OneSplitView {
+    - _findBestDistribution // 查找最优交易对
+    ...
+}
+
+class OneSplitCompound {
+    getExpectedReturn() // 估算最佳兑换方案
+    swap() // 执行多DEX交易
+}
+
+class OneSplitAave {
+    getExpectedReturn() // 估算最佳兑换方案
+    swap() // 执行多DEX交易
+}
+
+
+OneSplitAudit <|-- OneSplitView
+OneSplitView  o--  OneSplitCompound
+OneSplitView  o--  OneSplitAave
+
+
+@enduml
