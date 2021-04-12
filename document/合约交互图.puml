@@ -1,0 +1,30 @@
+@startuml
+actor Trader
+control OneSplit_Contract
+
+
+== swap ==
+
+Trader -> OneSplit_Contract: 估算最佳兑换方案
+OneSplit_Contract -> OneSplit_Contract: getExpectedReturn()
+
+
+Trader -> OneSplit_Contract: 执行多DEX兑换交易
+CToken_Contract -> CToken_Contract: Mint (生成cToken)
+CToken_Contract --> Suppliers: 收到cToken
+
+
+
+
+
+== repay ==
+Borrowers-> CToken_Contract: 发起还款
+CToken_Contract -> CToken_Contract : repayBorrow(repayAmount)
+Borrowers <-- CToken_Contract : 扣除对应的还款金额
+
+== liquidate ==
+== vote ==
+
+@enduml
+
+
